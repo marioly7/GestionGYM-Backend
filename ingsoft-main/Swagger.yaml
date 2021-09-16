@@ -1,0 +1,725 @@
+openapi: "3.0.0"
+info:
+  title: "No Appearance API"
+  description: "Esta Api * Creacion de Cuenta * Eleccion de preferencias * Menu Principal\n\
+    \n* Lista de historial de chat * Mensajeria * Lista de usuarios reportados * Reporte\
+    \ del usuario * Reportar usuario\n\n* Agregar Usuario * Editar datos de usuario\
+    \ * Editar perfil * Editar categorias del usuario * Ver información del usuario\n\
+    * Agregar categorias * Eliminar categorias * Editar categorias * Agregar subcategorias\
+    \ * Eliminar subcategorias * Editar subcategoria"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  version: "1.0.0-oas3"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
+servers:
+  - url: "https://virtserver.swaggerhub.com/Ro-Nel/Pru/1.0.0-oas3"
+    description: "SwaggerHub API Auto Mocking"
+  - url: "https://virtserver.swaggerhub.com/bipersonal/NoAppearence/1.0.0"
+    description: "SwaggerHub API Auto Mocking"
+  - url: "https://virtserver.swaggerhub.com/bipersonal/CATEGORY/1.0.0"
+    description: "SwaggerHub API Auto Mocking"
+tags:
+
+  - name: "users"
+    description: "operations with C.R.U.D for the users"
+  - name: "reports"
+    description: "operations for viewing and generating a report"
+  - name: "chats"
+    description: "operations for viewing and adding a friend"
+  - name: "messages"
+    description: "gets messages"
+  - name: "category"
+    description: "operations with C.R.U.D for the categories"
+  - name: "sub_category"
+    description: "operations with C.R.U.D for the subcategories"
+paths:
+  /users:
+    post:
+      tags:
+        - "users"
+      summary: "Add a new user to the system"
+      operationId: "addUser"
+      requestBody:
+        $ref: "#/components/requestBodies/Users"
+      responses:
+        "405":
+          description: "Invalid input"
+  /profile:
+    post:
+      tags:
+        - "users"
+      summary: "add a subcategory to the user's profile"
+      operationId: "addSubcategoryaddProfile"
+      requestBody:
+        $ref: "#/components/requestBodies/Users"
+      responses:
+        "405":
+          description: "Invalid input"
+  /users/{userId}:
+    put:
+      tags:
+        - "users"
+      summary: "Updates the user data"
+      description: "Updates the user data-categories, password, name, surname, birthdate,\
+        \ email."
+      parameters:
+        - name: "userId"
+          in: "path"
+          description: "The ID of the user that wants to edit its data"
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "integer"
+      requestBody:
+        description: "Updated user object"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Users"
+        required: true
+      responses:
+        "400":
+          description: "Invalid user supplied"
+        "404":
+          description: "User not found"
+  /user/{userId}:
+    get:
+      tags:
+        - "users"
+      summary: "Get data user"
+      operationId: "getUserById"
+      parameters:
+        - name: "userId"
+          in: "path"
+          description: "The name that needs to be fetched. Use category1 for testing."
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profiles"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Profiles"
+        "400":
+          description: "Invalid name category supplied"
+        "404":
+          description: "Category not found"
+  /profile/{profileId}:
+    get:
+      tags:
+        - "users"
+      summary: "Get profile"
+      operationId: "getProfileById"
+      parameters:
+        - name: "profileId"
+          in: "path"
+          description: "The name that needs to be fetched. Use category1 for testing."
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profiles"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Profiles"
+        "400":
+          description: "Invalid name category supplied"
+        "404":
+          description: "Category not found"
+
+  /users/{userId}/profile:
+    put:
+      tags:
+        - "users"
+      summary: "Updates the user data"
+      description: "Updates the user data-categories, password, name, surname, birthdate,\
+        \ email."
+      parameters:
+        - name: "userId"
+          in: "path"
+          description: "The ID of the user that wants to edit its data"
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "integer"
+      requestBody:
+        description: "Updated user object"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Profiles"
+        required: true
+      responses:
+        "400":
+          description: "Invalid user supplied"
+        "404":
+          description: "User not found"
+  /userchats/{userId}:
+    post:
+      tags:
+        - "users"
+      summary: "Adds an user to the friend's list of another user"
+      description: "Adds an user to the friend's list of another user"
+      parameters:
+        - name: "userId"
+          in: "path"
+          description: "The ID of the user that added another user"
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "integer"
+      responses:
+        "200":
+          description: "The user has been added to the friend list succesfully"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                properties:
+                  userId:
+                    type: "integer"
+                  friendUserId:
+                    type: "integer"
+                items:
+                  type: "object"
+  /chats/{messageId}:
+    get:
+      tags:
+        - "chats"
+      summary: "Get all the chat_id from an user"
+      operationId: "getMessagesByIdandChatId"
+      parameters:
+        - name: "messageId"
+          in: "path"
+          description: "The id of one of the messages of the chat id"
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "integer"
+      responses:
+        "200":
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Chats"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Chats"
+        "400":
+          description: "Invalid chatId supplied"
+        "404":
+          description: "ChatId not found"
+  /users/{userId}/messages:
+    post:
+      tags:
+        - "messages"
+      summary: "sends a message"
+      operationId: "sendMessage"
+      parameters:
+        - name: "userId"
+          in: "path"
+          description: "userId of the user that is sendig the message"
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "integer"
+      responses:
+        "200":
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+  /chats/{user_two_id}:
+    post:
+      tags:
+        - "reports"
+      summary: "Adds a report to the reported users list"
+      operationId: "addsAReport"
+      parameters:
+        - name: "user_two_id"
+          in: "path"
+          description: "The id of one of the users"
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "integer"
+      responses:
+        "200":
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+  /chats/{userId}:
+    get:
+      tags:
+        - "chats"
+      summary: "Get all the chat_id from an user"
+      operationId: "getChatById"
+      parameters:
+        - name: "userId"
+          in: "path"
+          description: "The id of the user, user must be logged"
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "integer"
+      responses:
+        "200":
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Chats"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Chats"
+        "400":
+          description: "Invalid chatId supplied"
+        "404":
+          description: "ChatId not found"
+
+  /chats/{reportId}:
+    get:
+      tags:
+        - "chats"
+      summary: "Get all the chat_id from an user"
+      operationId: "getReportByChatId"
+      parameters:
+        - name: "reportId"
+          in: "path"
+          description: "The id of the user, user must be logged"
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "integer"
+
+
+      responses:
+        "200":
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Chats"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Chats"
+        "400":
+          description: "Invalid chatId supplied"
+        "404":
+          description: "ChatId not found"
+  /categories:
+    post:
+      tags:
+        - "category"
+      summary: "Add a new category to the system"
+      operationId: "addCategory"
+      requestBody:
+        $ref: "#/components/requestBodies/Categories"
+      responses:
+        "405":
+          description: "Invalid input"
+  /categories/{categoryId}:
+    get:
+      tags:
+        - "category"
+      summary: "Get category by category name"
+      operationId: "getCategoryByName"
+      parameters:
+        - name: "categoryId"
+          in: "path"
+          description: "The name that needs to be fetched. Use category1 for testing."
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Categories"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Categories"
+        "400":
+          description: "Invalid name category supplied"
+        "404":
+          description: "Category not found"
+    put:
+      tags:
+        - "category"
+      summary: "Updated category"
+      description: "This can only be done by the created category."
+      operationId: "updateCategory"
+      parameters:
+        - name: "categoryId"
+          in: "path"
+          description: "name that need to be updated"
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "string"
+      requestBody:
+        description: "Updated category object"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Categories"
+        required: true
+      responses:
+        "400":
+          description: "Invalid category supplied"
+        "404":
+          description: "Category not found"
+    delete:
+      tags:
+        - "category"
+      summary: "Delete category"
+      description: "This can only be done by the created category."
+      operationId: "deleteCategory"
+      parameters:
+        - name: "categoryId"
+          in: "path"
+          description: "The name that needs to be deleted"
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "string"
+      responses:
+        "400":
+          description: "Invalid nameCategory supplied"
+        "404":
+          description: "Category not found"
+  /subcategories:
+    post:
+      tags:
+        - "sub_category"
+      summary: "Add a new subcategory to the system"
+      operationId: "addSubcategory"
+      requestBody:
+        $ref: "#/components/requestBodies/Subcategories"
+      responses:
+        "405":
+          description: "Invalid input"
+  /subcategories/{subcategoryId}:
+    get:
+      tags:
+        - "sub_category"
+      summary: "Get category by subcategory name"
+      operationId: "getSubcategoryByName"
+      parameters:
+        - name: "subcategoryId"
+          in: "path"
+          description: "The name that needs to be fetched. Use subcategory1 for testing."
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subcategories"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Subcategories"
+        "400":
+          description: "Invalid name subcategory supplied"
+        "404":
+          description: "Subcategory not found"
+    put:
+      tags:
+        - "sub_category"
+      summary: "Updated subategory"
+      description: "This can only be done by the created subcategory."
+      operationId: "updateSubcategory"
+      parameters:
+        - name: "subcategoryId"
+          in: "path"
+          description: "name that need to be updated"
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "string"
+      requestBody:
+        description: "Updated subcategory object"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Subcategories"
+        required: true
+      responses:
+        "400":
+          description: "Invalid subcategory supplied"
+        "404":
+          description: "Subcategory not found"
+    delete:
+      tags:
+        - "sub_category"
+      summary: "Delete subcategory"
+      description: "This can only be done by the created subcategory."
+      operationId: "deleteSubcategory"
+      parameters:
+        - name: "subcategoryId"
+          in: "path"
+          description: "The name that needs to be deleted"
+          required: true
+          style: "simple"
+          explode: false
+          schema:
+            type: "string"
+      responses:
+        "400":
+          description: "Invalid nameSubcategory supplied"
+        "404":
+          description: "Subcategory not found"
+components:
+  schemas:
+    Account_types:
+      type: "object"
+      properties:
+        accountTypeId:
+          type: "integer"
+          format: "int64"
+        type:
+          type: "string"
+        price:
+          type: "number"
+          format: "float"
+    Categories:
+      type: "object"
+      properties:
+        categoryId:
+          type: "integer"
+          format: "int64"
+        nameCategory:
+          type: "string"
+    Chats:
+      type: "object"
+      properties:
+        profile2UserName:
+          type: "string"
+        contentChat:
+          type: "string"
+        dateChat:
+          type: "string"
+    Messages:
+      type: "object"
+      properties:
+        userName:
+          type: "string"
+        dateMessage:
+          type: "string"
+        content:
+          type: "string"
+    Profiles:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        surname:
+          type: "string"
+        birthdate:
+          type: "string"
+        gender:
+          type: "string"
+        nameSubcategory:
+          type: "string"
+        nameCategory:
+          type: "string"
+    Report_options:
+      type: "object"
+      properties:
+        reportOpId:
+          type: "integer"
+          format: "int64"
+        description:
+          type: "string"
+    Subcategories:
+      type: "object"
+      properties:
+        nameSubcategory:
+          type: "string"
+        nameCategory:
+          type: "string"
+      xml:
+        name: "Subcategory"
+    Reports:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        report_options:
+          type: "integer"
+    User_types:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        type:
+          type: "string"
+    ApiResponse:
+      type: "object"
+      properties:
+        code:
+          type: "integer"
+          format: "int32"
+        type:
+          type: "string"
+        message:
+          type: "string"
+    Users:
+      type: "object"
+      properties:
+        userId:
+          type: "string"
+        userType:
+          type: "string"
+        name:
+          type: "string"
+        surname:
+          type: "string"
+        birthdate:
+          type: "string"
+        gender:
+          type: "boolean"
+        email:
+          type: "string"
+        password:
+          type: "string"
+        userPhoto:
+          type: "string"
+      xml:
+        name: "Users"
+  requestBodies:
+    Account_types:
+      description: "Account_type object that needs to be added to the system"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Account_types"
+        application/xml:
+          schema:
+            $ref: "#/components/schemas/Account_types"
+      required: true
+    Categories:
+      description: "Category object that needs to be added to the system"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Categories"
+        application/xml:
+          schema:
+            $ref: "#/components/schemas/Categories"
+      required: true
+    Chats:
+      description: "Chat object that needs to be added to the system"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Chats"
+        application/xml:
+          schema:
+            $ref: "#/components/schemas/Chats"
+      required: true
+    Messsages:
+      description: "Message object that needs to be added to the system"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Messages"
+        application/xml:
+          schema:
+            $ref: "#/components/schemas/Messages"
+      required: true
+    User_types:
+      description: "User_type object that needs to be added to the system"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/User_types"
+        application/xml:
+          schema:
+            $ref: "#/components/schemas/User_types"
+      required: true
+    Report_options:
+      description: "Report_option object that needs to be added to the system"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Report_options"
+        application/xml:
+          schema:
+            $ref: "#/components/schemas/Report_options"
+      required: true
+    Users:
+      description: "User object that needs to be added to the system"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Users"
+        application/xml:
+          schema:
+            $ref: "#/components/schemas/Users"
+      required: true
+    Reports:
+      description: "Report object that needs to be added to the system"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Reports"
+        application/xml:
+          schema:
+            $ref: "#/components/schemas/Reports"
+      required: true
+    Subcategories:
+      description: "Subcategory object that needs to be added to the system"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Subcategories"
+        application/xml:
+          schema:
+            $ref: "#/components/schemas/Subcategories"
+      required: true

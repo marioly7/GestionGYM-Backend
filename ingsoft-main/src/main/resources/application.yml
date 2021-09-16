@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: ingsoft
+  datasource:
+    name: demo_mysql_db
+    platform: mysql
+    url: jdbc:mysql://localhost:3306/pruebaGym?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: ""
+    hikari:
+      connectionTestQuery: select 1
+      maximum-pool-size: 2
+      connection-timeout: 60000
+
+logging:
+  level:
+    com:
+      spring:
+        ibatis:
+          UserMapper=DEBUG:
+mybatis:
+  configuration:
+    default-fetch-size: 100
+    default-statement-timeout: 30
+  mapper-locations: classpath:/dao/*Dao.xml
+
+server:
+  port: 8085
