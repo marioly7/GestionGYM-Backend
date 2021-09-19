@@ -8,10 +8,19 @@ public class User {
     private String password;
     private Integer userTypeId;
     private Integer registrantId;
+    private Integer planId;
     private String status;
     private Transaction transaction;
 
     public User() {
+    }
+
+    public Integer getPlanId() {
+        return planId;
+    }
+
+    public void setPlanId(Integer planId) {
+        this.planId = planId;
     }
 
     public Integer getIdUser() {
@@ -96,6 +105,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", userTypeId=" + userTypeId +
                 ", registrantId=" + registrantId +
+                ", planId=" + planId +
                 ", status='" + status + '\'' +
                 ", transaction=" + transaction +
                 '}';

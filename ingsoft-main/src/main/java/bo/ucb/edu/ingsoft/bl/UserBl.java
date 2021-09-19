@@ -30,6 +30,7 @@ public class UserBl {
         userAdd.setPassword(user.getPassword());
         userAdd.setRegistrantId(user.getRegistrantId());
         userAdd.setUserTypeId(user.getUserTypeId());
+        userAdd.setPlanId(user.getPlanId());
         userAdd.setTransaction(transaction);
         userDao.addUser(userAdd);
         Integer userId = transactionDao.getLastInsertId();

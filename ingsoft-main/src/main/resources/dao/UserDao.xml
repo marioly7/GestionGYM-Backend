@@ -6,9 +6,9 @@
     <insert id="addUser" parameterType="bo.ucb.edu.ingsoft.model.User">
     INSERT INTO user
         (`user_id`,`name`, `last_name`, `email`, `password`,`registrant_id`, `user_type_id`,
-         `status`, `tx_id`, `tx_date`, `tx_host`, `tx_update`)
+         `status`, `tx_id`, `tx_date`, `tx_host`, `tx_update`, `plan_id`)
         VALUES (null,#{userName}, #{lastName}, #{email}, #{password},#{registrantId},#{userTypeId},
-                1, #{transaction.txId}, #{transaction.txDate}, #{transaction.txHost}, #{transaction.txUpdate})
+                1, #{transaction.txId}, #{transaction.txDate}, #{transaction.txHost}, #{transaction.txUpdate}, #{planId})
     </insert>
 
     <select id="getUsers" resultType="bo.ucb.edu.ingsoft.dto.UserResponse">
@@ -18,10 +18,12 @@
                 a.last_name as lastname,
                 a.email as email,
                 a.password as password,
-                ut.type as userType
-        FROM user a, user_type ut
+                ut.type as userType,
+                p.plan as plan
+        FROM user a, user_type ut, plan p
         where a.status=1
         AND ut.user_type_id= a.user_type_id
+        AND p.plan_id = a.plan_id
     </select>
 
 

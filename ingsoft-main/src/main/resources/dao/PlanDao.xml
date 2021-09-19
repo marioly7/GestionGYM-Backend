@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bo.ucb.edu.ingsoft.dao.PlanDao">
+    <insert id="addPlan" parameterType="bo.ucb.edu.ingsoft.model.Plan">
+    INSERT INTO plan
+        (`plan_id`,`plan`,`price`,
+         `status`, `tx_id`, `tx_date`, `tx_host`, `tx_update`)
+        VALUES (null,#{plan},#{price},
+                1, #{transaction.txId}, #{transaction.txDate}, #{transaction.txHost}, #{transaction.txUpdate})
+    </insert>
+
+    <select id="getPlans" resultType="bo.ucb.edu.ingsoft.model.Plan">
+    SELECT
+                a.plan_id as planId,
+                a.plan as plan,
+                a.price as price
+        FROM plan a
+        where a.status=1
+    </select>
+
+
+</mapper>

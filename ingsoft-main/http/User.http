@@ -8,7 +8,8 @@ Content-Type: application/json
   "email": "vargas123",
   "password": "vargas@gmail.com",
   "userTypeId": 3,
-  "registrantId": 1
+  "registrantId": 1,
+  "planId": 1
 
 }
 ###

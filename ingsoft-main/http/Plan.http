@@ -1,0 +1,11 @@
+POST http://localhost:8085/plan/addPlan
+Accept: application/json
+Content-Type: application/json
+
+{
+  "plan": "Gold",
+  "price": 1000
+}
+###
+GET http://localhost:8085/plan/allPlans
+Accept: application/json

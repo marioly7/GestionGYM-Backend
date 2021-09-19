@@ -7,15 +7,17 @@ public class UserResponse {
     private String email;
     private String password;
     private String userType;
+    private String plan;
 //    private String status;
 
-    public UserResponse(Integer idUser, String userName, String lastName, String email, String password, String userType) {
+    public UserResponse(Integer idUser, String userName, String lastName, String email, String password, String userType, String plan) {
         this.idUser = idUser;
         this.userName = userName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.userType = userType;
+        this.plan = plan;
     }
 
     public UserResponse() {
@@ -61,6 +63,14 @@ public class UserResponse {
         this.userType = userType;
     }
 
+    public String getPlan() {
+        return plan;
+    }
+
+    public void setPlan(String plan) {
+        this.plan = plan;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -78,6 +88,7 @@ public class UserResponse {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", userType='" + userType + '\'' +
+                ", plan='" + plan + '\'' +
                 '}';
     }
 }
