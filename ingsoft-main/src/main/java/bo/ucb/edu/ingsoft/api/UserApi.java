@@ -5,6 +5,7 @@ import bo.ucb.edu.ingsoft.bl.UserBl;
 import bo.ucb.edu.ingsoft.dto.UserDataRequest;
 import bo.ucb.edu.ingsoft.dto.UserResponse;
 import bo.ucb.edu.ingsoft.model.Transaction;
+import bo.ucb.edu.ingsoft.model.User;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -26,10 +27,10 @@ public class UserApi {
     }
     @RequestMapping(value = "/addUser",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public UserResponse addUser(@RequestBody UserResponse user, HttpServletRequest request){
+    public User addUser(@RequestBody User user, HttpServletRequest request){
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionBl.createTransaction(transaction);
-        UserResponse userRes=userBl.addUser(user,transaction);
+        User userRes=userBl.addUser(user,transaction);
         return userRes;
     }
     @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE,

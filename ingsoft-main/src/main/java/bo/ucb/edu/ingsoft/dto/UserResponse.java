@@ -6,14 +6,16 @@ public class UserResponse {
     private String lastName;
     private String email;
     private String password;
+    private String userType;
 //    private String status;
 
-    public UserResponse(Integer idUser, String userName, String lastName, String email, String password) {
+    public UserResponse(Integer idUser, String userName, String lastName, String email, String password, String userType) {
         this.idUser = idUser;
         this.userName = userName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.userType = userType;
     }
 
     public UserResponse() {
@@ -51,6 +53,14 @@ public class UserResponse {
         this.email = email;
     }
 
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -62,11 +72,12 @@ public class UserResponse {
     @Override
     public String toString() {
         return "UserResponse{" +
-                "idNews='" + idUser + '\'' +
-                ", title=" + userName + '\'' +
-                ", content=" + lastName + '\'' +
-                ", dateNews=" + email + '\'' +
-                ", urlImage=" + password +
+                "idUser=" + idUser +
+                ", userName='" + userName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", userType='" + userType + '\'' +
                 '}';
     }
 }

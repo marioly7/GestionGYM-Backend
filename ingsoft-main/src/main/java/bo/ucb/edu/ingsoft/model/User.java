@@ -6,6 +6,8 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+    private Integer userTypeId;
+    private Integer registrantId;
     private String status;
     private Transaction transaction;
 
@@ -52,6 +54,22 @@ public class User {
         this.password = password;
     }
 
+    public Integer getUserTypeId() {
+        return userTypeId;
+    }
+
+    public void setUserTypeId(Integer userTypeId) {
+        this.userTypeId = userTypeId;
+    }
+
+    public Integer getRegistrantId() {
+        return registrantId;
+    }
+
+    public void setRegistrantId(Integer registrantId) {
+        this.registrantId = registrantId;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -76,6 +94,8 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", userTypeId=" + userTypeId +
+                ", registrantId=" + registrantId +
                 ", status='" + status + '\'' +
                 ", transaction=" + transaction +
                 '}';

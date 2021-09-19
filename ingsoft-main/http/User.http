@@ -1,4 +1,4 @@
-POST http://localhost:8080/user/addUser
+POST http://localhost:8085/user/addUser
 Accept: application/json
 Content-Type: application/json
 
@@ -6,7 +6,10 @@ Content-Type: application/json
   "userName": "Molly",
   "lastName": "Vargas",
   "email": "vargas123",
-  "password": "vargas@gmail.com"
+  "password": "vargas@gmail.com",
+  "userTypeId": 3,
+  "registrantId": 1
+
 }
 ###
 GET http://localhost:8085/user/allUsers

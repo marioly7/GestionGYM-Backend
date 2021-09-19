@@ -1,0 +1,10 @@
+POST http://localhost:8085/userType/addUserType
+Accept: application/json
+Content-Type: application/json
+
+{
+  "type": "Cliente"
+}
+###
+GET http://localhost:8085/userType/allUserTypes
+Accept: application/json
