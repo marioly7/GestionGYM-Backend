@@ -13,5 +13,6 @@ public interface UserDao {
     public List<UserResponse> getUsers();
     public void deleteUser(User user);
     public void updateUser(User user);
+    public Integer findUserByEmailPassword(String email, String password);
 
 }

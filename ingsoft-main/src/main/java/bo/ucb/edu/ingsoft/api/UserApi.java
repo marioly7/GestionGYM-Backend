@@ -54,19 +54,10 @@ public class UserApi {
         return user;
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Integer findUserByEmailPassword(@RequestParam String email, @RequestParam String password, HttpServletRequest request) {
 
-
-//    @RequestMapping(path = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-//    public List<NewsResponse> getNews(){
-//        return newsBl.getNews();
-//    }
-//
-//    @RequestMapping(value = "/delete/{idNews}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseStatus(value = HttpStatus.OK)
-//    public void productDelete(@PathVariable("idNews") Integer idNews, HttpServletRequest request) {
-////        Transaction transaction = TransactionUtil.createTransaction(request);
-////        transactionBl.createTransaction(transaction);
-//        newsBl.newsDelete(idNews);
-//    }
+        return userBl.findUserByEmailPassword(email, password);
+    }
 
 }

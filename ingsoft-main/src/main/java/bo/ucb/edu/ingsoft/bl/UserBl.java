@@ -66,4 +66,8 @@ public class UserBl {
         userDao.deleteUser(userAdd);
     }
 
+    public Integer findUserByEmailPassword(String email, String password) {
+        return userDao.findUserByEmailPassword(email, password);
+    }
+
 }
