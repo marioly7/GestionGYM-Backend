@@ -28,7 +28,7 @@ _Diseñar y desarrollar una aplicación móvil para la gestión de reservas y pa
 ## Autores ✒️
 
 * **Vargas Marioly** - [@marioly7](https://github.com/marioly7)
-* ** Nina mayumi **- [@YumiNina] (https://github.com/YumiNina)
+* ** Nina mayumi **- [@YumiNina
 # ELEMENTOS DE UN REQUERIMIENTO DEL SISTEMA
 
 ## Requerimientos del Negocio (Capacidades comerciales que el sistema necesitará) 
