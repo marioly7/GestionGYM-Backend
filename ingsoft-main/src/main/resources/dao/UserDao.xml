@@ -37,4 +37,15 @@
     </select>
 
 
+    <select id="findUserById" resultType="Integer">
+        SELECT DISTINCT
+            a.user_type_id as userTypeId
+        FROM user a, user_type b
+        WHERE
+          a.user_id = #{userId}
+          and b.user_type_id = a.user_type_id
+          and a.status=1
+    </select>
+
+
 </mapper>

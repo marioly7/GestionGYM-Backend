@@ -60,4 +60,10 @@ public class UserApi {
         return userBl.findUserByEmailPassword(email, password);
     }
 
+    @RequestMapping(value = "/userType", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Integer findUserById(@RequestParam Integer userId, HttpServletRequest request) {
+
+        return userBl.findUserById(userId);
+    }
+
 }

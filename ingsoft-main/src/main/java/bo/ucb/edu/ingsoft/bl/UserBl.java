@@ -70,4 +70,8 @@ public class UserBl {
         return userDao.findUserByEmailPassword(email, password);
     }
 
+    public Integer findUserById(Integer userId) {
+        return userDao.findUserById(userId);
+    }
+
 }
