@@ -29,6 +29,7 @@ _Diseñar y desarrollar una aplicación móvil para la gestión de reservas y pa
 
 * **Vargas Marioly** - [@marioly7](https://github.com/marioly7)
 *  Nina Mayumi - @YumiNina
+* **Cuba Napoleon** - [@NapoCuba1](https://github.com/Napocuba1)
 # ELEMENTOS DE UN REQUERIMIENTO DEL SISTEMA
 
 ## Requerimientos del Negocio (Capacidades comerciales que el sistema necesitará) 
