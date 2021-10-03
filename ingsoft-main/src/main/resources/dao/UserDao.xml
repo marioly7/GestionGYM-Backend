@@ -37,7 +37,7 @@
     </select>
 
 
-    <select id="findUserById" resultType="Integer">
+    <select id="findUserTypeById" resultType="Integer">
         SELECT DISTINCT
             a.user_type_id as userTypeId
         FROM user a, user_type b
@@ -45,6 +45,23 @@
           a.user_id = #{userId}
           and b.user_type_id = a.user_type_id
           and a.status=1
+    </select>
+
+    <select id="findUserById" resultType="bo.ucb.edu.ingsoft.dto.UserResponse">
+    SELECT
+    a.user_id as idUser,
+    a.name as username,
+    a.last_name as lastname,
+    a.email as email,
+    a.password as password,
+    ut.type as userType,
+    p.plan as plan
+    FROM user a
+    LEFT JOIN plan p
+        ON a.plan_id = p.plan_id
+    JOIN user_type ut on a.user_type_id = ut.user_type_id
+    WHERE a.status =1
+    AND a.user_id = #{userId};
     </select>
 
 

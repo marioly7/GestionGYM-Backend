@@ -61,8 +61,13 @@ public class UserApi {
     }
 
     @RequestMapping(value = "/userType", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Integer findUserById(@RequestParam Integer userId, HttpServletRequest request) {
+    public Integer findUserTypeById(@RequestParam Integer userId, HttpServletRequest request) {
 
+        return userBl.findUserTypeById(userId);
+    }
+
+    @RequestMapping(value = "/userById", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public UserResponse findUserById(@RequestParam Integer userId, HttpServletRequest request) {
         return userBl.findUserById(userId);
     }
 

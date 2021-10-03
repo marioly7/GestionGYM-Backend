@@ -24,3 +24,9 @@ Accept: application/json
 ###
 GET http://192.168.31.150:8085/user/userType?userId=3
 Accept: application/json
+
+###
+GET http://192.168.31.150:8085/user/userById?userId=5
+Accept: application/json
+
+###
