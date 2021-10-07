@@ -68,11 +68,14 @@ public class UserBl {
         return user;
     }
 
-    public void userDelete(Integer idUser,Transaction transaction){
-        User userAdd=new User();
-        userAdd.setIdUser(idUser);
-        userAdd.setTransaction(transaction);
-        userDao.deleteUser(userAdd);
+    public List<UserResponse> getUsersDisabled(){
+        List<UserResponse> user=userDao.getUsersDisabled();
+        return user;
+    }
+
+    public User userDelete(User user){
+        userDao.deleteUser(user);
+        return user;
     }
 
     public Integer findUserByEmailPassword(String email, String password) {

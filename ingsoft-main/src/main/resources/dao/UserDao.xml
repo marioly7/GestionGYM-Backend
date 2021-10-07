@@ -30,6 +30,22 @@
         WHERE user_id = #{idUser}
     </update>
 
+    <select id="getUsersDisabled" resultType="bo.ucb.edu.ingsoft.dto.UserResponse">
+    SELECT
+    a.user_id as idUser,
+    a.name as username,
+    a.last_name as lastname,
+    a.email as email,
+    a.password as password,
+    ut.type as userType,
+    p.plan as plan
+    FROM user a
+    LEFT JOIN plan p
+        ON a.plan_id = p.plan_id
+    JOIN user_type ut on a.user_type_id = ut.user_type_id
+    WHERE a.status =0;
+    </select>
+
     <select id="getUsers" resultType="bo.ucb.edu.ingsoft.dto.UserResponse">
     SELECT
     a.user_id as idUser,

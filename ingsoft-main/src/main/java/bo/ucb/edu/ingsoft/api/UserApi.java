@@ -41,11 +41,9 @@ public class UserApi {
         User userRes=userBl.updateUser(user,transaction);
         return userRes;
     }
-    @RequestMapping(value= "/deleteUser", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void deleteUser(@RequestParam Integer userId, HttpServletRequest request){
-        Transaction transaction = TransactionUtil.createTransaction(request);
-        transactionBl.createTransaction(transaction);
-        userBl.userDelete(userId,transaction);
+    @RequestMapping(value= "/deleteUser", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public User deleteUser(@RequestBody User user, HttpServletRequest request){
+        return userBl.userDelete(user);
     }
 
     @RequestMapping(value= "/enableUser", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -58,6 +56,12 @@ public class UserApi {
     @RequestMapping(value="/allUsers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UserResponse> allusers(HttpServletRequest request) {
         List<UserResponse> user=userBl.getUsers();
+        return user;
+    }
+
+    @RequestMapping(value="/allUsersDisabled", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<UserResponse> allusersDisabled(HttpServletRequest request) {
+        List<UserResponse> user=userBl.getUsersDisabled();
         return user;
     }
 

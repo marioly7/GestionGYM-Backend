@@ -3,12 +3,12 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "idUser": "6874657",
-  "userName": "Pedro",
-  "lastName": "Salazar",
-  "email": "pedro3",
-  "password": "pedro@gmail.com",
-  "userTypeId": 2,
+  "idUser": "6874845",
+  "userName": "Marioly",
+  "lastName": "Vargas",
+  "email": "marioly@gmail.com",
+  "password": "marioly",
+  "userTypeId": 1,
   "registrantId": 1,
   "planId": null
 
@@ -18,12 +18,16 @@ GET http://192.168.31.150:8085/user/allUsers
 Accept: application/json
 
 ###
-
-GET http://192.168.31.150:8085/user/login?email=vega@gmail.com&password=vega
+GET http://192.168.31.150:8085/user/allUsersDisabled
 Accept: application/json
 
 ###
-GET http://192.168.31.150:8085/user/userType?userId=3
+
+GET http://192.168.31.150:8085/user/login?email=marioly@gmail.com&password=marioly
+Accept: application/json
+
+###
+GET http://192.168.31.150:8085/user/userType?userId=6874845
 Accept: application/json
 
 ###
@@ -49,9 +53,13 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:8085/user/deleteUser?userId=6874657
+PUT http://localhost:8085/user/deleteUser
 Accept: application/json
 Content-Type: application/json
+
+{
+  "idUser": 6874657
+}
 
 ###
 

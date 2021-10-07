@@ -11,6 +11,7 @@ import java.util.List;
 public interface UserDao {
     public void addUser(User user);
     public List<UserResponse> getUsers();
+    public List<UserResponse> getUsersDisabled();
     public void deleteUser(User user);
     public void updateUser(User user);
     public void enableUser(User user);
