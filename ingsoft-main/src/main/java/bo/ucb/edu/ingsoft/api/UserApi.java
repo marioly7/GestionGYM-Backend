@@ -33,19 +33,26 @@ public class UserApi {
         User userRes=userBl.addUser(user,transaction);
         return userRes;
     }
-    @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE,
+    @RequestMapping(value = "/updateUser", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public UserResponse updateUser(@RequestBody UserResponse user, HttpServletRequest request){
+    public User updateUser(@RequestBody User user, HttpServletRequest request){
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionBl.createTransaction(transaction);
-        UserResponse userRes=userBl.updateUser(user,transaction);
+        User userRes=userBl.updateUser(user,transaction);
         return userRes;
     }
-    @RequestMapping(method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value= "/deleteUser", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteUser(@RequestParam Integer userId, HttpServletRequest request){
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionBl.createTransaction(transaction);
         userBl.userDelete(userId,transaction);
+    }
+
+    @RequestMapping(value= "/enableUser", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void enableUser(@RequestParam Integer userId, HttpServletRequest request){
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        userBl.userEnable(userId,transaction);
     }
 
     @RequestMapping(value="/allUsers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

@@ -31,3 +31,30 @@ GET http://192.168.31.150:8085/user/userById?userId=5
 Accept: application/json
 
 ###
+
+PUT http://localhost:8085/user/updateUser
+Accept: application/json
+Content-Type: application/json
+
+{
+  "idUser": "6874657",
+  "userName": "Carla",
+  "lastName": "Salazar",
+  "email": "pedro3",
+  "password": "pedro@gmail.com",
+  "userTypeId": 2,
+  "registrantId": 1,
+  "planId": null
+
+}
+
+###
+DELETE http://localhost:8085/user/deleteUser?userId=6874657
+Accept: application/json
+Content-Type: application/json
+
+###
+
+PUT http://localhost:8085/user/enableUser?userId=6874657
+Accept: application/json
+Content-Type: application/json

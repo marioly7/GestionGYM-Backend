@@ -39,22 +39,30 @@ public class UserBl {
         return user;
     }
 
-    public UserResponse updateUser(UserResponse user,Transaction transaction){
+    public User updateUser(User user,Transaction transaction){
         User userAdd=new User();
         userAdd.setIdUser(user.getIdUser());
         userAdd.setUserName(user.getUserName());
         userAdd.setLastName(user.getLastName());
         userAdd.setEmail(user.getEmail());
-        if(user.getPassword()!=null&&user.getPassword()!=""&&user.getPassword().length()>6){
-            userAdd.setPassword(user.getPassword());
-        }
-        else{
-            userAdd.setPassword(null);
-        }
+        userAdd.setPassword(user.getPassword());
+        userAdd.setRegistrantId(user.getRegistrantId());
+        userAdd.setUserTypeId(user.getUserTypeId());
+        userAdd.setPlanId(user.getPlanId());
         userAdd.setTransaction(transaction);
         userDao.updateUser(userAdd);
-        return user;
+        return userAdd;
     }
+
+
+    public void userEnable(Integer idUser,Transaction transaction){
+        User userAdd=new User();
+        userAdd.setIdUser(idUser);
+        userAdd.setTransaction(transaction);
+        userDao.enableUser(userAdd);
+    }
+
+
     public List<UserResponse> getUsers(){
         List<UserResponse> user=userDao.getUsers();
         return user;

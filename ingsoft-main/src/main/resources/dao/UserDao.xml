@@ -11,6 +11,25 @@
                 1, #{transaction.txId}, #{transaction.txDate}, #{transaction.txHost}, #{transaction.txUpdate}, #{planId})
     </insert>
 
+    <update id="updateUser" parameterType="bo.ucb.edu.ingsoft.model.User">
+        UPDATE user
+        SET user_id = #{idUser}, name = #{userName},last_name = #{lastName}, email = #{email}, password = #{password},
+        registrant_id=#{registrantId}, user_type_id = #{userTypeId}, plan_id = #{planId}
+        WHERE user_id = #{idUser} and status=1
+    </update>
+
+    <update id="deleteUser" parameterType="bo.ucb.edu.ingsoft.model.User">
+        UPDATE user
+        SET status = 0
+        WHERE user_id = #{idUser}
+    </update>
+
+    <update id="enableUser" parameterType="bo.ucb.edu.ingsoft.model.User">
+        UPDATE user
+        SET status = 1
+        WHERE user_id = #{idUser}
+    </update>
+
     <select id="getUsers" resultType="bo.ucb.edu.ingsoft.dto.UserResponse">
     SELECT
     a.user_id as idUser,
