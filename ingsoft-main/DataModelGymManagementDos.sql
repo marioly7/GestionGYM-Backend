@@ -20,6 +20,7 @@ CREATE TABLE activity_schedule (
     activity_id int NOT NULL,
     schedule_id int NOT NULL,
     gym_instructor varchar(100) NULL,
+    capacity int NOT NULL,
     status int NULL,
     tx_id int NULL,
     tx_date timestamp NULL,
@@ -78,7 +79,7 @@ CREATE TABLE transaction (
 
 -- Table: user
 CREATE TABLE user (
-    user_id int NOT NULL AUTO_INCREMENT,
+    user_id int NOT NULL,
     name varchar(200) NULL,
     last_name varchar(200) NULL,
     email varchar(200) NULL,
@@ -90,7 +91,7 @@ CREATE TABLE user (
     tx_date timestamp NULL,
     tx_host varchar(100) NULL,
     tx_update date NULL,
-    plan_id int NOT NULL,
+    plan_id int NULL,
     CONSTRAINT user_pk PRIMARY KEY (user_id)
 );
 

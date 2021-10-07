@@ -24,6 +24,7 @@ public class UserBl {
 
     public User addUser(User user,Transaction transaction){
         User userAdd=new User();
+        userAdd.setIdUser(user.getIdUser());
         userAdd.setUserName(user.getUserName());
         userAdd.setLastName(user.getLastName());
         userAdd.setEmail(user.getEmail());

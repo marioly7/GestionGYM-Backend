@@ -3,11 +3,12 @@ Accept: application/json
 Content-Type: application/json
 
 {
+  "idUser": "6874657",
   "userName": "Pedro",
   "lastName": "Salazar",
   "email": "pedro3",
   "password": "pedro@gmail.com",
-  "userTypeId": 3,
+  "userTypeId": 2,
   "registrantId": 1,
   "planId": null
 

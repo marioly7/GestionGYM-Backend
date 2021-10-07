@@ -7,7 +7,7 @@
     INSERT INTO user
         (`user_id`,`name`, `last_name`, `email`, `password`,`registrant_id`, `user_type_id`,
          `status`, `tx_id`, `tx_date`, `tx_host`, `tx_update`, `plan_id`)
-        VALUES (null,#{userName}, #{lastName}, #{email}, #{password},#{registrantId},#{userTypeId},
+        VALUES (#{idUser},#{userName}, #{lastName}, #{email}, #{password},#{registrantId},#{userTypeId},
                 1, #{transaction.txId}, #{transaction.txDate}, #{transaction.txHost}, #{transaction.txUpdate}, #{planId})
     </insert>
 
