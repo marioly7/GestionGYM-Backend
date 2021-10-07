@@ -55,11 +55,9 @@ public class UserBl {
     }
 
 
-    public void userEnable(Integer idUser,Transaction transaction){
-        User userAdd=new User();
-        userAdd.setIdUser(idUser);
-        userAdd.setTransaction(transaction);
-        userDao.enableUser(userAdd);
+    public User userEnable(User user){
+        userDao.enableUser(user);
+        return user;
     }
 
 

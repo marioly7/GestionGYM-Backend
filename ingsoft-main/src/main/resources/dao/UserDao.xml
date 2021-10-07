@@ -95,8 +95,7 @@
     LEFT JOIN plan p
         ON a.plan_id = p.plan_id
     JOIN user_type ut on a.user_type_id = ut.user_type_id
-    WHERE a.status =1
-    AND a.user_id = #{userId};
+    WHERE  a.user_id = #{userId};
     </select>
 
 

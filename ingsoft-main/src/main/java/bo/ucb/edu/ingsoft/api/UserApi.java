@@ -47,10 +47,8 @@ public class UserApi {
     }
 
     @RequestMapping(value= "/enableUser", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void enableUser(@RequestParam Integer userId, HttpServletRequest request){
-        Transaction transaction = TransactionUtil.createTransaction(request);
-        transactionBl.createTransaction(transaction);
-        userBl.userEnable(userId,transaction);
+    public User enableUser(@RequestBody User user, HttpServletRequest request){
+        return userBl.userEnable(user);
     }
 
     @RequestMapping(value="/allUsers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
