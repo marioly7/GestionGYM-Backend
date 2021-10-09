@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bo.ucb.edu.ingsoft.dao.PaymentDao">
+    <insert id="addPayment" parameterType="bo.ucb.edu.ingsoft.model.Payment">
+    INSERT INTO payment
+        (`payment_id`,`user_id`,
+         `status`, `tx_id`, `tx_date`, `tx_host`, `tx_update`)
+        VALUES (null,#{userId},
+                0, #{transaction.txId}, #{transaction.txDate}, #{transaction.txHost}, #{transaction.txUpdate})
+    </insert>
+
+    <select id="getPayments" resultType="bo.ucb.edu.ingsoft.dto.PaymentResponse">
+    SELECT
+                a.payment_id as paymentId,
+                a.user_id as userId,
+                a.status as status,
+                u.name as name,
+                u.last_name as lastName
+        FROM payment a, user u
+        WHERE a.user_id = u.user_id
+
+    </select>
+
+
+</mapper>

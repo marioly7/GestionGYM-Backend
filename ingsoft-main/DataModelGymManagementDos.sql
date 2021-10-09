@@ -119,6 +119,21 @@ CREATE TABLE user_type (
     CONSTRAINT user_type_pk PRIMARY KEY (user_type_id)
 ) COMMENT 'e.g. send after payment, charge after delivery, ...';
 
+CREATE TABLE payment (
+                         payment_id int NOT NULL AUTO_INCREMENT,
+                         user_id int NOT NULL,
+                         status int NULL,
+                         tx_id int NULL,
+                         tx_date timestamp NULL,
+                         tx_host varchar(100) NULL,
+                         tx_update date NULL,
+                         CONSTRAINT payment_id PRIMARY KEY (payment_id)
+);
+
+ALTER TABLE payment ADD CONSTRAINT user_payment FOREIGN KEY user_payment (user_id)
+    REFERENCES user (user_id);
+
+
 -- foreign keys
 -- Reference: Table_21_activity (table: plan_activity)
 ALTER TABLE plan_activity ADD CONSTRAINT Table_21_activity FOREIGN KEY Table_21_activity (activity_id)
