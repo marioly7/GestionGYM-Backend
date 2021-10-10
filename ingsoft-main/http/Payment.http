@@ -8,3 +8,18 @@ Content-Type: application/json
 ###
 GET http://localhost:8085/payment/allPayments
 Accept: application/json
+
+###
+GET http://localhost:8085/payment/paymentByUserId?userId=6874845
+Accept: application/json
+
+###
+
+PUT http://localhost:8085/payment/updatePayment
+Accept: application/json
+Content-Type: application/json
+
+{
+  "paymentId": 1,
+  "status": 0
+}
