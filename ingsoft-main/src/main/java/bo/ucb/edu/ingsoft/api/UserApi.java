@@ -75,6 +75,11 @@ public class UserApi {
         return userBl.findUserTypeById(userId);
     }
 
+    @RequestMapping(value = "/userPlan", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String findUserPlanById(@RequestParam Integer userId, HttpServletRequest request) {
+        return userBl.findUserPlanById(userId);
+    }
+
     @RequestMapping(value = "/userById", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public UserResponse findUserById(@RequestParam Integer userId, HttpServletRequest request) {
         return userBl.findUserById(userId);

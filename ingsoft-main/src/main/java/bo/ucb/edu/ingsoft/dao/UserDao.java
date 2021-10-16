@@ -17,5 +17,6 @@ public interface UserDao {
     public void enableUser(User user);
     public Integer findUserByEmailPassword(String email, String password);
     public Integer findUserTypeById(Integer userId);
+    public String findUserPlanById(Integer userId);
     public UserResponse findUserById(Integer userId);
 }

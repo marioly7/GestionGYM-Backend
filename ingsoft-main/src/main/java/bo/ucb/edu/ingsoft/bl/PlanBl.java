@@ -3,6 +3,8 @@ package bo.ucb.edu.ingsoft.bl;
 import bo.ucb.edu.ingsoft.dao.PlanDao;
 import bo.ucb.edu.ingsoft.dao.TransactionDao;
 import bo.ucb.edu.ingsoft.dao.UserTypeDao;
+import bo.ucb.edu.ingsoft.dto.UserResponse;
+import bo.ucb.edu.ingsoft.model.Activity;
 import bo.ucb.edu.ingsoft.model.Plan;
 import bo.ucb.edu.ingsoft.model.Transaction;
 import bo.ucb.edu.ingsoft.model.UserType;
@@ -33,7 +35,12 @@ public class PlanBl {
         return plan;
     }
 
-   /* public UserResponse updateUser(UserResponse user,Transaction transaction){
+    public List<Activity> findActivityByPlan(Integer planId) {
+        return planDao.findActivityByPlan(planId);
+    }
+
+
+    /* public UserResponse updateUser(UserResponse user,Transaction transaction){
         User userAdd=new User();
         userAdd.setIdUser(user.getIdUser());
         userAdd.setUserName(user.getUserName());

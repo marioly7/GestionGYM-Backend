@@ -1,5 +1,7 @@
 package bo.ucb.edu.ingsoft.dao;
 
+import bo.ucb.edu.ingsoft.dto.UserResponse;
+import bo.ucb.edu.ingsoft.model.Activity;
 import bo.ucb.edu.ingsoft.model.Plan;
 import bo.ucb.edu.ingsoft.model.UserType;
 import org.apache.ibatis.annotations.Mapper;
@@ -12,4 +14,5 @@ public interface PlanDao {
     public List<Plan> getPlans();
     public void deletePlan(Plan plan);
     public void updatePlan(Plan plan);
+    public List<Activity> findActivityByPlan(Integer planId);
 }

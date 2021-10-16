@@ -80,6 +80,11 @@ public class UserBl {
         return userDao.findUserByEmailPassword(email, password);
     }
 
+
+    public String findUserPlanById(Integer userId) {
+        return userDao.findUserPlanById(userId);
+    }
+
     public Integer findUserTypeById(Integer userId) {
         return userDao.findUserTypeById(userId);
     }

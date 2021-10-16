@@ -3,16 +3,15 @@ package bo.ucb.edu.ingsoft.api;
 import bo.ucb.edu.ingsoft.bl.PlanBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.bl.UserTypeBl;
+import bo.ucb.edu.ingsoft.dto.UserResponse;
+import bo.ucb.edu.ingsoft.model.Activity;
 import bo.ucb.edu.ingsoft.model.Plan;
 import bo.ucb.edu.ingsoft.model.Transaction;
 import bo.ucb.edu.ingsoft.model.UserType;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -27,6 +26,11 @@ public class PlanApi {
     public PlanApi(PlanBl planBl, TransactionBl transactionBl){
         this.planBl = planBl;
         this.transactionBl=transactionBl;
+    }
+
+    @RequestMapping(value = "/activitiesByPlan", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Activity> findActivityByPlan(@RequestParam Integer planId, HttpServletRequest request) {
+        return planBl.findActivityByPlan(planId);
     }
     @RequestMapping(value = "/addPlan",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)

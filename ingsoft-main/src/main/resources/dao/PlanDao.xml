@@ -20,5 +20,16 @@
         where a.status=1
     </select>
 
+    <select id="findActivityByPlan" resultType="bo.ucb.edu.ingsoft.model.Activity">
+    SELECT
+    a.activity_id as activityId,
+    a.activity as activity
+    FROM activity a, plan p, plan_activity pa
+    WHERE  p.plan_id = #{planId}
+    AND a.activity_id = pa.activity_id
+    AND pa.plan_id = p.plan_id
+    </select>
+
+
 
 </mapper>

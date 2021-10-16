@@ -17,9 +17,11 @@
                 a.user_id as userId,
                 a.status as status,
                 u.name as name,
-                u.last_name as lastName
-        FROM payment a, user u
+                u.last_name as lastName,
+                p.plan as plan
+        FROM payment a, user u, plan p
         WHERE a.user_id = u.user_id
+        AND u.plan_id = p.plan_id
 
     </select>
 

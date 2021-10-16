@@ -5,6 +5,7 @@ Content-Type: application/json
 {
   "userId": 6874845
 }
+
 ###
 GET http://localhost:8085/payment/allPayments
 Accept: application/json

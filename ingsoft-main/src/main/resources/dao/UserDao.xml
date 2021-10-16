@@ -82,6 +82,15 @@
           and a.status=1
     </select>
 
+    <select id="findUserPlanById" resultType="String">
+        SELECT DISTINCT
+            b.plan as userPlan
+        FROM user a, plan b
+        WHERE
+          a.user_id = #{userId}
+          and a.plan_id = b.plan_id
+    </select>
+
     <select id="findUserById" resultType="bo.ucb.edu.ingsoft.dto.UserResponse">
     SELECT
     a.user_id as idUser,
