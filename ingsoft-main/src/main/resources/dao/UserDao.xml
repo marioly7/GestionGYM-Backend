@@ -62,9 +62,11 @@
     WHERE a.status =1;
     </select>
 
-    <select id="findUserByEmailPassword" resultType="Integer">
+    <select id="findUserByEmailPassword" resultType="bo.ucb.edu.ingsoft.model.User">
         SELECT DISTINCT
-            a.user_id as userId
+            a.user_id as idUser,
+            a.plan_id as planId,
+            a.user_type_id as userTypeId
         FROM user a, user_type b
         WHERE
           a.email = #{email} and a.password = #{password}

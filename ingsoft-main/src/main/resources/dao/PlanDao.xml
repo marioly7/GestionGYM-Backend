@@ -21,7 +21,7 @@
     </select>
 
     <select id="findActivityByPlan" resultType="bo.ucb.edu.ingsoft.model.Activity">
-    SELECT
+    SELECT DISTINCT
     a.activity_id as activityId,
     a.activity as activity
     FROM activity a, plan p, plan_activity pa

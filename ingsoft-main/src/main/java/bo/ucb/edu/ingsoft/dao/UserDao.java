@@ -15,7 +15,7 @@ public interface UserDao {
     public void deleteUser(User user);
     public void updateUser(User user);
     public void enableUser(User user);
-    public Integer findUserByEmailPassword(String email, String password);
+    public User findUserByEmailPassword(String email, String password);
     public Integer findUserTypeById(Integer userId);
     public String findUserPlanById(Integer userId);
     public UserResponse findUserById(Integer userId);

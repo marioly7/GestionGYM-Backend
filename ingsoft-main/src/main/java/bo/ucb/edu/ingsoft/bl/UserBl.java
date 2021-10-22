@@ -76,7 +76,7 @@ public class UserBl {
         return user;
     }
 
-    public Integer findUserByEmailPassword(String email, String password) {
+    public User findUserByEmailPassword(String email, String password) {
         return userDao.findUserByEmailPassword(email, password);
     }
 

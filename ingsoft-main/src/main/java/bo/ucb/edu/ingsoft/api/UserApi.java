@@ -64,7 +64,7 @@ public class UserApi {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Integer findUserByEmailPassword(@RequestParam String email, @RequestParam String password, HttpServletRequest request) {
+    public User findUserByEmailPassword(@RequestParam String email, @RequestParam String password, HttpServletRequest request) {
 
         return userBl.findUserByEmailPassword(email, password);
     }
