@@ -3,6 +3,7 @@ package bo.ucb.edu.ingsoft.bl;
 import bo.ucb.edu.ingsoft.dao.PaymentDao;
 import bo.ucb.edu.ingsoft.dao.PlanDao;
 import bo.ucb.edu.ingsoft.dao.TransactionDao;
+import bo.ucb.edu.ingsoft.dto.PaymentReportResponse;
 import bo.ucb.edu.ingsoft.dto.PaymentResponse;
 import bo.ucb.edu.ingsoft.dto.UserResponse;
 import bo.ucb.edu.ingsoft.model.Payment;
@@ -35,8 +36,23 @@ public class PaymentBl {
         return payment1;
     }
 
+    public Payment addPaymentCard(Payment payment1, Transaction transaction){
+        Payment payment=new Payment();
+        payment.setUserId(payment1.getUserId());
+        payment.setTransaction(transaction);
+        paymentDao.addPaymentCard(payment);
+        Integer paymentId = transactionDao.getLastInsertId();
+        payment1.setPaymentId(paymentId);
+        return payment1;
+    }
+
     public List<PaymentResponse> getPayments(){
         List<PaymentResponse> payments= paymentDao.getPayments();
+        return payments;
+    }
+
+    public PaymentReportResponse paymentReport(){
+        PaymentReportResponse payments= paymentDao.getPaymentReport();
         return payments;
     }
 

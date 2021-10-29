@@ -11,6 +11,22 @@
                 0, #{transaction.txId}, #{transaction.txDate}, #{transaction.txHost}, #{transaction.txUpdate})
     </insert>
 
+    <select id="getPaymentReport" resultType="bo.ucb.edu.ingsoft.dto.PaymentReportResponse">
+        select T1.Cant As ingresos, T2.Cant As porcentajePagado, T3.Cant As porcentajeNoPagado
+        FROM (SELECT SUM(plan.price) As Cant FROM payment p, user u, plan plan
+              WHERE p.status = 1 AND p.user_id = u.user_id AND plan.plan_id = u.plan_id) As T1,
+             (SELECT COUNT(*) As Cant FROM payment WHERE status = 1) As T2,
+             (SELECT COUNT(*) As Cant FROM payment WHERE status = 0) As T3
+    </select>
+
+    <insert id="addPaymentCard" parameterType="bo.ucb.edu.ingsoft.model.Payment">
+        INSERT INTO payment
+        (`payment_id`,`user_id`,
+         `status`, `tx_id`, `tx_date`, `tx_host`, `tx_update`)
+        VALUES (null,#{userId},
+                1, #{transaction.txId}, #{transaction.txDate}, #{transaction.txHost}, #{transaction.txUpdate})
+    </insert>
+
     <select id="getPayments" resultType="bo.ucb.edu.ingsoft.dto.PaymentResponse">
     SELECT
                 a.payment_id as paymentId,

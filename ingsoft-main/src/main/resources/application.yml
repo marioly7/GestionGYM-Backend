@@ -25,4 +25,4 @@ mybatis:
   mapper-locations: classpath:/dao/*Dao.xml
 
 server:
-  port: 8085
+  port: 8089

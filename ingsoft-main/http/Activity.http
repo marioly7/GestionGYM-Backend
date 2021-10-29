@@ -1,3 +1,26 @@
 ###
-GET http://localhost:8085/activity/activityDetails?activityId=1
+GET http://localhost:8089/activity/activityDetails?activityId=1
 Accept: application/json
+
+###
+GET http://localhost:8089/activity/activityScheduleById?activityId=2
+Accept: application/json
+
+###
+GET http://localhost:8089/activity/activityScheduleByUserId?userId=452356253
+Accept: application/json
+
+
+###
+GET http://localhost:8089/activity/userInActivity?activityId=5&userId=452356253
+Accept: application/json
+
+###
+POST http://localhost:8089/activity/activityRegister
+Accept: application/json
+Content-Type: application/json
+
+{
+  "activityId":2,
+  "userId": 452356253
+  }

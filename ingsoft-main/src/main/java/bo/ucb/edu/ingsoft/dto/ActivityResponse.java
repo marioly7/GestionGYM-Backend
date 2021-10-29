@@ -3,6 +3,7 @@ package bo.ucb.edu.ingsoft.dto;
 import io.swagger.models.auth.In;
 
 public class ActivityResponse {
+    private Integer activityScheduleId;
     private Integer activityId;
     private String activity;
     private Integer scheduleId;
@@ -10,6 +11,14 @@ public class ActivityResponse {
     private String hour;
     private Integer capacity;
     private String instructor;
+
+    public Integer getActivityScheduleId() {
+        return activityScheduleId;
+    }
+
+    public void setActivityScheduleId(Integer activityScheduleId) {
+        this.activityScheduleId = activityScheduleId;
+    }
 
     public Integer getActivityId() {
         return activityId;
@@ -70,7 +79,8 @@ public class ActivityResponse {
     @Override
     public String toString() {
         return "ActivityResponse{" +
-                "activityId=" + activityId +
+                "activityScheduleId=" + activityScheduleId +
+                ", activityId=" + activityId +
                 ", activity='" + activity + '\'' +
                 ", scheduleId=" + scheduleId +
                 ", day='" + day + '\'' +

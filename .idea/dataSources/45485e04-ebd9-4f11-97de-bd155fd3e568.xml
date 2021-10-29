@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="pruebaGym@localhost">
-  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.19">
+  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.23">
     <root id="1">
       <ServerVersion>10.4.11</ServerVersion>
       <DefaultEngine>InnoDB</DefaultEngine>
@@ -1087,23 +1087,15 @@
     </collation>
     <user id="348" parent="1" name="pma">
       <Host>localhost</Host>
-      <ObjectGrants>SELECT,INSERT,UPDATE,DELETE|phpmyadmin:null
-</ObjectGrants>
     </user>
     <user id="349" parent="1" name="root">
       <Host>127.0.0.1</Host>
-      <ObjectGrants>ALL PRIVILEGES!
-</ObjectGrants>
     </user>
     <user id="350" parent="1" name="root">
       <Host>::1</Host>
-      <ObjectGrants>ALL PRIVILEGES!
-</ObjectGrants>
     </user>
     <user id="351" parent="1" name="root">
       <Host>localhost</Host>
-      <ObjectGrants>ALL PRIVILEGES!
-</ObjectGrants>
     </user>
     <table id="352" parent="19" name="transaction"/>
     <table id="353" parent="19" name="users"/>

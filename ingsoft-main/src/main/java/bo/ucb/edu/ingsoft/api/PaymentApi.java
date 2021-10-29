@@ -3,6 +3,7 @@ package bo.ucb.edu.ingsoft.api;
 import bo.ucb.edu.ingsoft.bl.PaymentBl;
 import bo.ucb.edu.ingsoft.bl.PlanBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
+import bo.ucb.edu.ingsoft.dto.PaymentReportResponse;
 import bo.ucb.edu.ingsoft.dto.PaymentResponse;
 import bo.ucb.edu.ingsoft.dto.UserResponse;
 import bo.ucb.edu.ingsoft.model.Payment;
@@ -37,6 +38,15 @@ public class PaymentApi {
         return planRes;
     }
 
+    @RequestMapping(value = "/addPaymentCard",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Payment addPaymentCard(@RequestBody Payment payment, HttpServletRequest request){
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        Payment planRes= paymentBl.addPaymentCard(payment,transaction);
+        return planRes;
+    }
+
     @RequestMapping(value="/allPayments", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<PaymentResponse> allPayments(HttpServletRequest request) {
         List<PaymentResponse> payments= paymentBl.getPayments();
@@ -54,6 +64,11 @@ public class PaymentApi {
     @RequestMapping(value = "/paymentByUserId", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Integer findUserById(@RequestParam Integer userId, HttpServletRequest request) {
         return paymentBl.findPaymentByUserId(userId);
+    }
+
+    @RequestMapping(value = "/paymentReport", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public PaymentReportResponse paymentReport(HttpServletRequest request) {
+        return paymentBl.paymentReport();
     }
 
 }

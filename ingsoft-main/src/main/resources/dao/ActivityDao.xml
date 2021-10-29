@@ -4,8 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bo.ucb.edu.ingsoft.dao.ActivityDao">
 
+    <insert id="activityRegister" parameterType="bo.ucb.edu.ingsoft.model.UserActivity">
+        INSERT INTO user_activity_schedule
+        (`user_activity_schedule_id`,`user_id`, `activity_schedule_id`,  `tx_id`, `tx_date`, `tx_host`, `tx_update`)
+        VALUES (null,#{userId}, #{activityId},  #{transaction.txId}, #{transaction.txDate}, #{transaction.txHost}, #{transaction.txUpdate})
+    </insert>
+
+    <update id="updateEspacios"  parameterType="bo.ucb.edu.ingsoft.model.UserActivity">
+        UPDATE activity_schedule SET capacity = capacity - 1 WHERE activity_schedule_id = #{activityId}
+    </update>
+
     <select id="activityDetails" resultType="bo.ucb.edu.ingsoft.dto.ActivityResponse">
     SELECT
+    acs.activity_schedule_id as activityScheduleId,
     a.activity_id as activityId,
     a.activity as activity,
     acs.gym_instructor as instructor,
@@ -17,6 +28,45 @@
     WHERE  a.activity_id = #{activityId}
     AND a.activity_id = acs.activity_id
     AND s.schedule_id = acs.schedule_id
+    </select>
+
+    <select id="activityScheduleById" resultType="bo.ucb.edu.ingsoft.dto.ActivityResponse">
+        SELECT
+            a.activity_id as activityId,
+            a.activity as activity,
+            acs.gym_instructor as instructor,
+            acs.capacity as capacity,
+            s.schedule_id as scheduleId,
+            s.hour as hour,
+    s.day as day
+        FROM activity a, schedule s, activity_schedule acs
+        WHERE a.activity_id = acs.activity_id
+          AND s.schedule_id = acs.schedule_id
+          AND acs.activity_schedule_id = #{activityId}
+    </select>
+
+    <select id="activityByUserId" resultType="bo.ucb.edu.ingsoft.dto.ActivityResponse">
+        SELECT distinct
+            a.activity_id as activityId,
+            a.activity as activity,
+            acs.gym_instructor as instructor,
+            acs.capacity as capacity,
+            s.schedule_id as scheduleId,
+            s.hour as hour,
+    s.day as day
+        FROM activity a, schedule s, activity_schedule acs, user_activity_schedule uas
+        WHERE a.activity_id = acs.activity_id
+          AND s.schedule_id = acs.schedule_id
+          AND uas.activity_schedule_id = acs.activity_schedule_id
+          AND uas.user_id = #{userId}
+    </select>
+
+
+    <select id="userInActivity" resultType="Integer">
+        SELECT count(user_activity_schedule_id)
+        FROM user_activity_schedule
+        WHERE  user_id =  #{userId}
+          and activity_schedule_id = #{activityId}
     </select>
 
 
