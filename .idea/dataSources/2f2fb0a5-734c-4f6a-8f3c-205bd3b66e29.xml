@@ -1672,60 +1672,64 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="460" parent="364" name="user_activity_schedule_user">
+    <column id="460" parent="364" name="status">
+      <Position>8</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <index id="461" parent="364" name="user_activity_schedule_user">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="461" parent="364" name="user_activity_schedule_activity_schedule">
+    <index id="462" parent="364" name="user_activity_schedule_activity_schedule">
       <ColNames>activity_schedule_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="462" parent="364" name="PRIMARY">
+    <key id="463" parent="364" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_activity_schedule_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="463" parent="364" name="user_activity_schedule_user">
+    <foreign-key id="464" parent="364" name="user_activity_schedule_user">
       <ColNames>user_id</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>user_id</RefColNames>
     </foreign-key>
-    <foreign-key id="464" parent="364" name="user_activity_schedule_activity_schedule">
+    <foreign-key id="465" parent="364" name="user_activity_schedule_activity_schedule">
       <ColNames>activity_schedule_id</ColNames>
       <RefTableName>activity_schedule</RefTableName>
       <RefColNames>activity_schedule_id</RefColNames>
     </foreign-key>
-    <column id="465" parent="365" name="user_type_id">
+    <column id="466" parent="365" name="user_type_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="466" parent="365" name="type">
+    <column id="467" parent="365" name="type">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="467" parent="365" name="status">
+    <column id="468" parent="365" name="status">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="468" parent="365" name="tx_id">
+    <column id="469" parent="365" name="tx_id">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="469" parent="365" name="tx_date">
+    <column id="470" parent="365" name="tx_date">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="470" parent="365" name="tx_host">
+    <column id="471" parent="365" name="tx_host">
       <Position>6</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="471" parent="365" name="tx_update">
+    <column id="472" parent="365" name="tx_update">
       <Position>7</Position>
       <DataType>date|0s</DataType>
     </column>
-    <key id="472" parent="365" name="PRIMARY">
+    <key id="473" parent="365" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_type_id</ColNames>
       <Primary>1</Primary>
