@@ -10,6 +10,6 @@ GET http://localhost:8085/plan/allPlans
 Accept: application/json
 
 ###
-GET http://localhost:8085/plan/activitiesByPlan?planId=1
+GET http://localhost:8089/plan/activitiesByPlan?planId=2
 Accept: application/json
 

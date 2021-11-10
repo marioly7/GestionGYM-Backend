@@ -43,6 +43,7 @@
 
     <select id="activityScheduleById" resultType="bo.ucb.edu.ingsoft.dto.ActivityResponse">
         SELECT
+            acs.activity_schedule_id as activityScheduleId,
             a.activity_id as activityId,
             a.activity as activity,
             acs.gym_instructor as instructor,
