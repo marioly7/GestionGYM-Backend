@@ -52,4 +52,11 @@ public class ActivityApi {
         UserActivity userRes=planBl.activityRegister(user, transaction);
         return userRes;
     }
+
+    @RequestMapping(value= "/cancelActivity", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Integer cancelActivity(@RequestBody UserActivity user,HttpServletRequest request){
+        planBl.cancelActivity(user);
+        return 1;
+    }
+
 }

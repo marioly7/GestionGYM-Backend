@@ -6,12 +6,23 @@
 
     <insert id="activityRegister" parameterType="bo.ucb.edu.ingsoft.model.UserActivity">
         INSERT INTO user_activity_schedule
-        (`user_activity_schedule_id`,`user_id`, `activity_schedule_id`,  `tx_id`, `tx_date`, `tx_host`, `tx_update`)
-        VALUES (null,#{userId}, #{activityId},  #{transaction.txId}, #{transaction.txDate}, #{transaction.txHost}, #{transaction.txUpdate})
+        (`user_activity_schedule_id`,`user_id`, `activity_schedule_id`,  `tx_id`, `tx_date`, `tx_host`, `tx_update`, `status`)
+        VALUES (null,#{userId}, #{activityId},  #{transaction.txId}, #{transaction.txDate}, #{transaction.txHost}, #{transaction.txUpdate}, 1)
     </insert>
 
     <update id="updateEspacios"  parameterType="bo.ucb.edu.ingsoft.model.UserActivity">
         UPDATE activity_schedule SET capacity = capacity - 1 WHERE activity_schedule_id = #{activityId}
+    </update>
+
+    <update id="updateEspaciosCancelados"  parameterType="bo.ucb.edu.ingsoft.model.UserActivity">
+        UPDATE activity_schedule SET capacity = capacity + 1 WHERE activity_schedule_id = #{activityId}
+    </update>
+
+    <update id="cancelActivity"  parameterType="bo.ucb.edu.ingsoft.model.UserActivity">
+        UPDATE user_activity_schedule
+        SET status = 0
+        WHERE activity_schedule_id = #{activityId}
+          AND user_id = #{userId}
     </update>
 
     <select id="activityDetails" resultType="bo.ucb.edu.ingsoft.dto.ActivityResponse">
@@ -47,6 +58,7 @@
 
     <select id="activityByUserId" resultType="bo.ucb.edu.ingsoft.dto.ActivityResponse">
         SELECT distinct
+            acs.activity_schedule_id as activityScheduleId,
             a.activity_id as activityId,
             a.activity as activity,
             acs.gym_instructor as instructor,
@@ -59,6 +71,7 @@
           AND s.schedule_id = acs.schedule_id
           AND uas.activity_schedule_id = acs.activity_schedule_id
           AND uas.user_id = #{userId}
+        AND uas.status = 1
     </select>
 
 

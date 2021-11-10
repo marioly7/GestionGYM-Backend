@@ -3,10 +3,10 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "idUser": "6874845",
-  "userName": "Marioly",
+  "idUser": "687481145",
+  "userName": "Marta",
   "lastName": "Vargas",
-  "email": "marioly@gmail.com",
+  "email": "marta@gmail.com",
   "password": "marioly",
   "userTypeId": 1,
   "registrantId": 1,

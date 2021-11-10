@@ -24,3 +24,13 @@ Content-Type: application/json
   "activityId":2,
   "userId": 452356253
   }
+
+###
+PUT http://localhost:8089/activity/cancelActivity
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userId": 452356253,
+  "activityId": 1
+}

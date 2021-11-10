@@ -24,6 +24,11 @@ public class ActivityBl {
         return planDao.userInActivity(activityId, userId);
     }
 
+    public void cancelActivity(UserActivity user) {
+        planDao.cancelActivity(user);
+        planDao.updateEspaciosCancelados(user);
+    }
+
 
     public ActivityResponse activityScheduleById(Integer activityId) {
         return planDao.activityScheduleById(activityId);
