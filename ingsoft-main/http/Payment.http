@@ -23,6 +23,10 @@ Accept: application/json
 ###
 GET http://localhost:8089/payment/paymentByUserId?userId=6874845
 Accept: application/json
+
+###
+GET http://localhost:8089/payment/paymentByUserIdDetails?userId=6874845
+Accept: application/json
 ###
 GET http://localhost:8089/payment/paymentReport
 Accept: application/json

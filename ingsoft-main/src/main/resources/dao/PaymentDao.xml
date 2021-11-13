@@ -56,5 +56,21 @@
           AND u.user_id = #{userId}
     </select>
 
+    <select id="findPaymentByUserIdDetails" resultType="bo.ucb.edu.ingsoft.dto.PaymentDetails">
+        SELECT
+            p.payment_id as paymentId,
+            u.user_id as userId,
+            plan.plan_id as planId,
+            p.status as status,
+            u.name as userName,
+            plan.plan as plan,
+            plan.price as price,
+            p.tx_update as fecha
+        FROM payment p, user u, plan plan
+        WHERE u.user_id = #{userId}
+          AND u.user_id = p.user_id
+          AND u.plan_id = plan.plan_id
+    </select>
+
 
 </mapper>

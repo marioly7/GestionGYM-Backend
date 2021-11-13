@@ -1,5 +1,6 @@
 package bo.ucb.edu.ingsoft.dao;
 
+import bo.ucb.edu.ingsoft.dto.PaymentDetails;
 import bo.ucb.edu.ingsoft.dto.PaymentReportResponse;
 import bo.ucb.edu.ingsoft.dto.PaymentResponse;
 import bo.ucb.edu.ingsoft.model.Payment;
@@ -17,4 +18,5 @@ public interface PaymentDao {
     public void updatePayment(Payment payment);
     public PaymentReportResponse getPaymentReport();
     public Integer findPaymentByUserId(Integer userId);
+    public PaymentDetails findPaymentByUserIdDetails(Integer userId);
 }

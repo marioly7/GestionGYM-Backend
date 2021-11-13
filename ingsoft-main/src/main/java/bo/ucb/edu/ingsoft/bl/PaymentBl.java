@@ -3,6 +3,7 @@ package bo.ucb.edu.ingsoft.bl;
 import bo.ucb.edu.ingsoft.dao.PaymentDao;
 import bo.ucb.edu.ingsoft.dao.PlanDao;
 import bo.ucb.edu.ingsoft.dao.TransactionDao;
+import bo.ucb.edu.ingsoft.dto.PaymentDetails;
 import bo.ucb.edu.ingsoft.dto.PaymentReportResponse;
 import bo.ucb.edu.ingsoft.dto.PaymentResponse;
 import bo.ucb.edu.ingsoft.dto.UserResponse;
@@ -63,6 +64,11 @@ public class PaymentBl {
         paymentDao.updatePayment(paymentUpdate);
         return paymentUpdate;
     }
+
+    public PaymentDetails findPaymentByUserIdDetails(Integer userId) {
+        return paymentDao.findPaymentByUserIdDetails(userId);
+    }
+
     public Integer findPaymentByUserId(Integer userId) {
         return paymentDao.findPaymentByUserId(userId);
     }

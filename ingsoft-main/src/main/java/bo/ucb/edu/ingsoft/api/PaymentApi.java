@@ -3,6 +3,7 @@ package bo.ucb.edu.ingsoft.api;
 import bo.ucb.edu.ingsoft.bl.PaymentBl;
 import bo.ucb.edu.ingsoft.bl.PlanBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
+import bo.ucb.edu.ingsoft.dto.PaymentDetails;
 import bo.ucb.edu.ingsoft.dto.PaymentReportResponse;
 import bo.ucb.edu.ingsoft.dto.PaymentResponse;
 import bo.ucb.edu.ingsoft.dto.UserResponse;
@@ -64,6 +65,11 @@ public class PaymentApi {
     @RequestMapping(value = "/paymentByUserId", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Integer findUserById(@RequestParam Integer userId, HttpServletRequest request) {
         return paymentBl.findPaymentByUserId(userId);
+    }
+
+    @RequestMapping(value = "/paymentByUserIdDetails", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public PaymentDetails findUserByIdDetails(@RequestParam Integer userId, HttpServletRequest request) {
+        return paymentBl.findPaymentByUserIdDetails(userId);
     }
 
     @RequestMapping(value = "/paymentReport", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
